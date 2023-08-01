@@ -18,12 +18,12 @@ requirements:
         \ \"elastic_job\")\n    elastic_job.input[\"eps_range\"] = 0.001\n    elastic_job.run()\n\
         \    np.savetxt(\"elastic_matrix.dat\", elastic_job[\"output/elasticmatrix\"\
         ][\"C\"])\n\nif __name__==\"__main__\":\n    calculate_elastic_matrix(structure\
-        \ = \"$(inputs.structure)\",)"
-    - $(inputs.structure_filename)
+        \ = \"$(inputs.structure.path)\",)"
+
 inputs:
-  structure: string
+  structure: File
 outputs:
-  elastic_matrix.dat:
+  elastic_matrix:
     type: File
     outputBinding:
       glob: elastic_matrix.dat

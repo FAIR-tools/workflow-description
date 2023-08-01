@@ -18,7 +18,7 @@ requirements:
 inputs:
   element: string
 outputs:
-  structure_file.data:
+  structure_file:
     type: File
     outputBinding:
       glob: structure_file.data
