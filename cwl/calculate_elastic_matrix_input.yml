@@ -1,0 +1,4 @@
+structure: structure_file.data
+structure_filename:
+  class: File
+  path: structure_file.data
