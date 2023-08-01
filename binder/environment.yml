@@ -1,4 +1,4 @@
-name: workflow
+name: workflow-desc
 channels:
   - conda-forge
   - bioconda
@@ -14,3 +14,8 @@ dependencies:
   - cwltool
   - pyiron_atomistics
   - pyiron
+  - pyiron_gpl
+  - pyiron-data
+  - openmpi
+  - mpi4py
+  - lammps =2022.06.23=*openmpi*_16
