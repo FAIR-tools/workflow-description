@@ -1,0 +1,16 @@
+name: workflow
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python =3.10
+  - jupyterlab
+  - numpy
+  - matplotlib
+  - pandas
+  - pyyaml
+  - nextflow
+  - lammps
+  - cwltool
+  - pyiron_atomistics
+  - pyiron
