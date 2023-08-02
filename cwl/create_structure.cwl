@@ -7,7 +7,8 @@ requirements:
   InitialWorkDirRequirement:
     listing:
     - entryname: script.py
-      entry: "def create_structure(element='Al'):\n    \"\"\"\n    Create an alloy\
+      entry: |-
+        def create_structure(element='Al'):\n    \"\"\"\n    Create an alloy\
         \ structure\n    \"\"\"\n    from pyiron_base import Settings\n    s = Settings()\n\
         \    s._configuration['resource_paths'].append('/home/menon/pyiron/resources')\n\
         \    from pyiron import Project\n    pr = Project(\"elastic_constant\")\n\
