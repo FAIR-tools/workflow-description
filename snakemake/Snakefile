@@ -1,0 +1,20 @@
+rule all:
+    input:
+        "structure_file.data",
+        "elastic_matrix.data"
+
+rule create_structure:
+    input:
+        "input.yml"
+    output:
+        "structure_file.data"
+    script:
+        "create_structure.py"
+
+rule calculate_elastic_matrix:
+    input:
+        rules.create_structure.output
+    output:
+        "elastic_matrix.data"
+    script:
+        "calculate_elastic_matrix.py"
