@@ -1,3 +1,4 @@
+#!/bin/bash
 git clone https://github.com/pyiron/pyiron_contrib.git
 ls
 cd pyiron_contrib
