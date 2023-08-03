@@ -1,16 +1,18 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
 element = Channel.from('Al')
+prefix = Channel.from('/srv/conda/envs/notebook/')
 
 process createStructure {
     input:
     val element
+    val prefix
 
     output:
     path 'structure_file.data'
 
     """
-    #!/home/menon/miniconda3/envs/workflow-desc/bin/python
+    #!$prefix/bin/python
 
     from pyiron_base import Settings
     s = Settings()
@@ -27,17 +29,19 @@ process createStructure {
 process calculateElasticMatrix {
     input:
     path structure_file
+    val prefix
 
     output:
     path 'elastic_matrix.dat'
 
     """
-    #!/home/menon/miniconda3/envs/workflow-desc/bin/python
+    #!$prefix/bin/python
     
     from pyiron_base import Settings
     s = Settings()
-    s._configuration['resource_paths'].append('/home/menon/pyiron/resources')
-    s._configuration['resource_paths'].append('/home/menon/miniconda3/envs/workflow-desc/share/iprpy')
+    s._configuration['resource_paths'].append('$prefix/share/pyiron')
+    s._configuration['resource_paths'].append('$prefix/share/iprpy')
+
 
     import numpy as np
     from pyiron import Project    
@@ -55,6 +59,6 @@ process calculateElasticMatrix {
 
 
 workflow {
-   createStructure(element)
-   calculateElasticMatrix(createStructure.out)
+   createStructure(element, prefix)
+   calculateElasticMatrix(createStructure.out, prefix)
 }
