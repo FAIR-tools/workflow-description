@@ -1,4 +1,0 @@
-#!/bin/bash
-git clone https://github.com/pyiron/pyiron_contrib.git
-
-pip install  pyiron_contrib

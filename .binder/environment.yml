@@ -20,3 +20,4 @@ dependencies:
   - mpi4py
   - lammps =2022.06.23=*openmpi*_16
   - snakemake
+  - pyiron_contrib =0.1.12
