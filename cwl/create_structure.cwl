@@ -8,16 +8,21 @@ requirements:
     listing:
     - entryname: script.py
       entry: |-
-        def create_structure(element='Al'):\n    \"\"\"\n    Create an alloy\
-        \ structure\n    \"\"\"\n    from pyiron_base import Settings\n    s = Settings()\n\
-        \    s._configuration['resource_paths'].append('/home/menon/pyiron/resources')\n\
-        \    from pyiron import Project\n    pr = Project(\"elastic_constant\")\n\
-        \    structure = pr.create.structure.bulk(element, \n                    \
-        \                     cubic=True)\n    outfile = \"structure_file.data\"\n\
-        \    structure.write(outfile, format=\"vasp\")\n    return outfile\n\nif __name__==\"\
-        __main__\":\n    create_structure(element = \"$(inputs.element)\",)"
+        from pyiron_base import Settings
+        s = Settings()
+        s._configuration['resource_paths'].append('$(inputs.prefix)/share/pyiron')
+        s._configuration['resource_paths'].append('$(inputs.prefix)/share/iprpy')
+        
+        from pyiron import Project
+        pr = Project("elastic_constant")
+        structure = pr.create.structure.bulk("$(inputs.element)", 
+                                             cubic=True)
+        outfile = "structure_file.data"
+        structure.write(outfile, format="vasp")
+
 inputs:
   element: string
+  prefix: string
 outputs:
   structure_file:
     type: File
