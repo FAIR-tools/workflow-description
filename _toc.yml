@@ -1,2 +1,4 @@
 format: jb-book
 root: README
+chapters:
+  - file: nextflow/intro
