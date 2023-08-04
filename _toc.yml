@@ -1,4 +1,8 @@
 format: jb-book
 root: README
 chapters:
-  - file: nextflow/intro
+  - file: pyiron/workflow.ipynb
+  - file: pyiron-workflow/workflow.ipynb
+  - file: cwl/execute_cwl.ipynb
+  - file: nextflow/execute_nextflow
+  - file: snakemake/execute_snakemake.ipynb
