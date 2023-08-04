@@ -19,4 +19,4 @@ See the implementation:
 - [Nextflow](nextflow/execute_nextflow.ipynb)
 - [Snakemake](snakemake/execute_snakemake.ipynb)
 
-[![Binder](https://notebooks.mpcdf.mpg.de/binder/badge_logo.svg)](https://notebooks.mpcdf.mpg.de/binder/v2/git/https%3A%2F%2Fgitlab.mpcdf.mpg.de%2Fsmenon%2Fworkflow-description.git/HEAD?labpath=README.md)
+[![Binder](https://notebooks.mpcdf.mpg.de/binder/badge_logo.svg)](https://notebooks.mpcdf.mpg.de/binder/v2/git/https%3A%2F%2Fgitlab.mpcdf.mpg.de%2Fsmenon%2Fworkflow-description.git/HEAD?labpath=workflow-description%2Fintro.ipynb)
