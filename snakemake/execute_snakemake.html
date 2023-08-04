@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Link to my non-Sphinx HTML file &#8212; Workflow description</title>
+    <title>Snakemake &#8212; Workflow description</title>
   
   
   
@@ -60,10 +60,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'nextflow/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'snakemake/execute_snakemake';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="workflow_languages" href="../README.html" />
+    <link rel="prev" title="Nextflow" href="../nextflow/execute_nextflow.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -149,7 +149,11 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Link to my non-Sphinx HTML file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyiron/workflow.html">pyiron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyiron-workflow/workflow.html">pyiron workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cwl/execute_cwl.html">Execute CWL workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nextflow/execute_nextflow.html">Nextflow</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Snakemake</a></li>
 </ul>
 
     </div>
@@ -219,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/nextflow/intro.rst" target="_blank"
+      <li><a href="../_sources/snakemake/execute_snakemake.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -229,7 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -299,7 +303,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Link to my non-Sphinx HTML file</h1>
+    <h1>Snakemake</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -313,10 +317,105 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="link-to-my-non-sphinx-html-file">
-<h1>Link to my non-Sphinx HTML file<a class="headerlink" href="#link-to-my-non-sphinx-html-file" title="Permalink to this headline">#</a></h1>
-<p>To get to my standalone, non-generated HTML file,
-just <a class="reference external" href="../_static/report.html">click here</a> now!</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="snakemake">
+<h1>Snakemake<a class="headerlink" href="#snakemake" title="Permalink to this headline">#</a></h1>
+<p>Execute Snakemake by</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>snakemake<span class="w"> </span>--cores<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">Building DAG of jobs...</span>
+<span class=" -Color -Color-Yellow">Using shell: /usr/bin/bash</span>
+<span class=" -Color -Color-Yellow">Provided cores: 1 (use --cores to define parallelism)</span>
+<span class=" -Color -Color-Yellow">Rules claiming more threads will be scaled down.</span>
+<span class=" -Color -Color-Yellow">Job stats:</span>
+<span class=" -Color -Color-Yellow">job                         count</span>
+<span class=" -Color -Color-Yellow">------------------------  -------</span>
+<span class=" -Color -Color-Yellow">all                             1</span>
+<span class=" -Color -Color-Yellow">calculate_elastic_matrix        1</span>
+<span class=" -Color -Color-Yellow">create_structure                1</span>
+<span class=" -Color -Color-Yellow">total                           3</span>
+
+<span class=" -Color -Color-Yellow">Select jobs to execute...</span>
+
+<span class=" -Color -Color-Green">[Fri Aug  4 15:54:43 2023]</span>
+<span class=" -Color -Color-Green">rule create_structure:</span>
+<span class=" -Color -Color-Green">    input: input.yml</span>
+<span class=" -Color -Color-Green">    output: structure_file.data</span>
+<span class=" -Color -Color-Green">    jobid: 1</span>
+<span class=" -Color -Color-Green">    reason: Missing output files: structure_file.data</span>
+<span class=" -Color -Color-Green">    resources: tmpdir=/tmp</span>
+
+<span class=" -Color -Color-Green">[Fri Aug  4 15:55:07 2023]</span>
+<span class=" -Color -Color-Green">Finished job 1.</span>
+<span class=" -Color -Color-Green">1 of 3 steps (33%) done</span>
+<span class=" -Color -Color-Yellow">Select jobs to execute...</span>
+
+<span class=" -Color -Color-Green">[Fri Aug  4 15:55:07 2023]</span>
+<span class=" -Color -Color-Green">rule calculate_elastic_matrix:</span>
+<span class=" -Color -Color-Green">    input: structure_file.data</span>
+<span class=" -Color -Color-Green">    output: elastic_matrix.data</span>
+<span class=" -Color -Color-Green">    jobid: 2</span>
+<span class=" -Color -Color-Green">    reason: Missing output files: elastic_matrix.data; Input files updated by another job: structure_file.data</span>
+<span class=" -Color -Color-Green">    resources: tmpdir=/tmp</span>
+
+2023-08-04 15:55:14,276 - pyiron_log - WARNING - No HDF5 file found - remove database entry and create new job! elastic_job
+The job elastic_job was saved and received the ID: 824
+The job s_e_0 was saved and received the ID: 825
+The job s_01_e_m0_00100 was saved and received the ID: 826
+The job s_01_e_m0_00050 was saved and received the ID: 827
+The job s_01_e_0_00050 was saved and received the ID: 828
+The job s_01_e_0_00100 was saved and received the ID: 829
+The job s_08_e_m0_00100 was saved and received the ID: 830
+The job s_08_e_m0_00050 was saved and received the ID: 831
+The job s_08_e_0_00050 was saved and received the ID: 832
+The job s_08_e_0_00100 was saved and received the ID: 833
+The job s_23_e_m0_00100 was saved and received the ID: 834
+The job s_23_e_m0_00050 was saved and received the ID: 835
+The job s_23_e_0_00050 was saved and received the ID: 836
+The job s_23_e_0_00100 was saved and received the ID: 837
+<span class=" -Color -Color-Green">[Fri Aug  4 15:55:38 2023]</span>
+<span class=" -Color -Color-Green">Finished job 2.</span>
+<span class=" -Color -Color-Green">2 of 3 steps (67%) done</span>
+<span class=" -Color -Color-Yellow">Select jobs to execute...</span>
+
+<span class=" -Color -Color-Green">[Fri Aug  4 15:55:38 2023]</span>
+<span class=" -Color -Color-Green">localrule all:</span>
+<span class=" -Color -Color-Green">    input: structure_file.data, elastic_matrix.data</span>
+<span class=" -Color -Color-Green">    jobid: 0</span>
+<span class=" -Color -Color-Green">    reason: Input files updated by another job: structure_file.data, elastic_matrix.data</span>
+<span class=" -Color -Color-Green">    resources: tmpdir=/tmp</span>
+
+<span class=" -Color -Color-Green">[Fri Aug  4 15:55:38 2023]</span>
+<span class=" -Color -Color-Green">Finished job 0.</span>
+<span class=" -Color -Color-Green">3 of 3 steps (100%) done</span>
+<span class=" -Color -Color-Yellow">Complete log: .snakemake/log/2023-08-04T155442.847387.snakemake.log</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After execution, a report can be compiled</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>snakemake<span class="w"> </span>--report<span class="w"> </span>report.html
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">Building DAG of jobs...</span>
+<span class=" -Color -Color-Yellow">Creating report...</span>
+<span class=" -Color -Color-Yellow">Loading script code for rule create_structure</span>
+<span class=" -Color -Color-Yellow">Loading script code for rule calculate_elastic_matrix</span>
+<span class=" -Color -Color-Yellow">Downloading resources and rendering HTML.</span>
+<span class=" -Color -Color-Yellow">Report created: report.html.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can view the report <a class="reference download internal" download="" href="../_downloads/bdea25671f94506c73c717b51e627413/report_snakemake.html"><span class="xref download myst">here</span></a></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -332,7 +431,7 @@ just <a class="reference external" href="../_static/report.html">click here</a> 
         },
         kernelOptions: {
             name: "python3",
-            path: "./nextflow"
+            path: "./snakemake"
         },
         predefinedOutput: true
     }
@@ -351,12 +450,12 @@ just <a class="reference external" href="../_static/report.html">click here</a> 
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../README.html"
+       href="../nextflow/execute_nextflow.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">workflow_languages</p>
+        <p class="prev-next-title">Nextflow</p>
       </div>
     </a>
 </div></div>
