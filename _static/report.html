@@ -18,11 +18,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Nextflow workflow report for run id [cranky_solvay]">
+  <meta name="description" content="Nextflow workflow report for run id [furious_leakey]">
   <meta name="author" content="Paolo Di Tommaso, Phil Ewels">
   <link rel="icon" type="image/png" href="https://www.nextflow.io/img/favicon.png" />
 
-  <title>[cranky_solvay] Nextflow Workflow Report</title>
+  <title>[furious_leakey] Nextflow Workflow Report</title>
 
   <style type="text/css">
   /*!
@@ -137,7 +137,7 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
         <li class="nav-item"><a class="nav-link" href="#tasks">Tasks</a></li>
       </ul>
       <span class="navbar-text">
-        [cranky_solvay]
+        [furious_leakey]
       </span>
     </div>
   </nav>
@@ -146,7 +146,7 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
     <div class="container">
 
       <h1 class="display-3">Nextflow workflow report</h1>
-      <h2 class="text-muted mb-4"><samp>[cranky_solvay]</samp> </h2>
+      <h2 class="text-muted mb-4"><samp>[furious_leakey]</samp> </h2>
 
       
           <div class="alert alert-success mb-4">
@@ -157,8 +157,8 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
       <dl>
         <dt>Run times</dt>
         <dd>
-          <span id="workflow_start">03-Aug-2023 10:01:27</span> - <span id="workflow_complete">03-Aug-2023 10:02:06</span>
-          (<span id="completed_fromnow"></span>duration: <strong>38.3s</strong>)
+          <span id="workflow_start">04-Aug-2023 13:46:19</span> - <span id="workflow_complete">04-Aug-2023 13:46:55</span>
+          (<span id="completed_fromnow"></span>duration: <strong>35.8s</strong>)
         </dd>
 
         <dl>
@@ -171,7 +171,7 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
         </dl>
 
         <dt>Nextflow command</dt>
-        <dd><pre class="nfcommand"><code>nextflow run workflow.nf -with-report report</code></pre></dd>
+        <dd><pre class="nfcommand"><code>nextflow run workflow.nf -with-report report.html -with-timeline timeline.html</code></pre></dd>
       </dl>
 
       <dl class="row small">
@@ -179,13 +179,13 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
         <dd class="col-sm-9"><samp>(a few seconds)</samp></dd>
 
         <dt class="col-sm-3">Launch directory</dt>
-        <dd class="col-sm-9"><samp>/mnt/c/Users/menon/Documents/winrepos/projects-workflow/workflow-description/nextflow</samp></dd>
+        <dd class="col-sm-9"><samp>/home/jovyan/workflow-description/nextflow</samp></dd>
 
         <dt class="col-sm-3">Work directory</dt>
-        <dd class="col-sm-9"><samp>/mnt/c/Users/menon/Documents/winrepos/projects-workflow/workflow-description/nextflow/work</samp></dd>
+        <dd class="col-sm-9"><samp>/home/jovyan/workflow-description/nextflow/work</samp></dd>
 
         <dt class="col-sm-3">Project directory</dt>
-        <dd class="col-sm-9"><samp>/mnt/c/Users/menon/Documents/winrepos/projects-workflow/workflow-description/nextflow</samp></dd>
+        <dd class="col-sm-9"><samp>/home/jovyan/workflow-description/nextflow</samp></dd>
 
         
           <dt class="col-sm-3">Script name</dt>
@@ -194,11 +194,11 @@ table.DTCR_clonedTable.dataTable{position:absolute !important;background-color:r
 
         
           <dt class="col-sm-3">Script ID</dt>
-          <dd class="col-sm-9"><code>4b8cdbaae059136e32260482e3e0b99b</code></dd>
+          <dd class="col-sm-9"><code>c79961825b162edb573cf84ba4d5fd60</code></dd>
         
 
         <dt class="col-sm-3">Workflow session</dt>
-        <dd class="col-sm-9"><code>4f625d69-31f5-4574-991e-4250c9302727</code></dd>
+        <dd class="col-sm-9"><code>113a64ec-b162-43b1-a769-d437addce558</code></dd>
 
         
 
@@ -1030,7 +1030,7 @@ $(function() {
 
   // Nextflow report data
   window.data = { "trace":[
-{"task_id":"1","hash":"5b\/06303f","native_id":"999","process":"createStructure","module":"-","container":"-","tag":"-","name":"createStructure (1)","status":"COMPLETED","exit":"0","submit":"1691049689138","start":"1691049689168","complete":"1691049696719","duration":"7581","realtime":"7219","%cpu":"112.8","%mem":"1.9","rss":"316719104","vmem":"1166028800","peak_rss":"0","peak_vmem":"0","rchar":"0","wchar":"0","syscr":"0","syscw":"0","read_bytes":"0","write_bytes":"0","attempt":"1","workdir":"\/mnt\/c\/Users\/menon\/Documents\/winrepos\/projects-workflow\/workflow-description\/nextflow\/work\/5b\/06303f195809d783eba9d13e6f28ce","script":"\n    #!\/home\/menon\/miniconda3\/envs\/workflow-desc\/bin\/python\n\n    from pyiron_base import Settings\n    s = Settings()\n    s._configuration[\'resource_paths\'].append(\'\/home\/menon\/pyiron\/resources\')\n    from pyiron import Project\n    pr = Project(\"elastic_constant\")\n    structure = pr.create.structure.bulk(\"Al\", \n                                         cubic=True)\n    outfile = \"structure_file.data\"\n    structure.write(outfile, format=\"vasp\")\n    ","scratch":"-","queue":"-","cpus":"1","memory":"-","disk":"-","time":"-","env":"-","error_action":"-","vol_ctxt":"150","inv_ctxt":"545","hostname":"-"},{"task_id":"2","hash":"d0\/bc1400","native_id":"1283","process":"calculateElasticMatrix","module":"-","container":"-","tag":"-","name":"calculateElasticMatrix (1)","status":"COMPLETED","exit":"0","submit":"1691049696775","start":"1691049696832","complete":"1691049726058","duration":"29283","realtime":"28879","%cpu":"116.5","%mem":"1.9","rss":"327360512","vmem":"1207320576","peak_rss":"0","peak_vmem":"0","rchar":"0","wchar":"0","syscr":"0","syscw":"0","read_bytes":"0","write_bytes":"0","attempt":"1","workdir":"\/mnt\/c\/Users\/menon\/Documents\/winrepos\/projects-workflow\/workflow-description\/nextflow\/work\/d0\/bc1400f53d05b7789fd75ec7c62552","script":"\n    #!\/home\/menon\/miniconda3\/envs\/workflow-desc\/bin\/python\n    \n    from pyiron_base import Settings\n    s = Settings()\n    s._configuration[\'resource_paths\'].append(\'\/home\/menon\/pyiron\/resources\')\n    s._configuration[\'resource_paths\'].append(\'\/home\/menon\/miniconda3\/envs\/workflow-desc\/share\/iprpy\')\n\n    import numpy as np\n    from pyiron import Project    \n    pr = Project(\'elastic_constant\')\n    job = pr.create.job.Lammps(job_name=\"lammps_job\")\n    job.structure = pr.create.structure.ase.read(\"structure_file.data\", format=\'vasp\')\n    job.potential = \'2009--Mendelev-M-I--Al-Mg--LAMMPS--ipr1\'\n    job.calc_minimize()\n    elastic_job = job.create_job(pr.job_type.ElasticMatrixJob, \"elastic_job\")\n    elastic_job.input[\"eps_range\"] = 0.001\n    elastic_job.run()\n    np.savetxt(\"elastic_matrix.dat\", elastic_job[\"output\/elasticmatrix\"][\"C\"])\n    ","scratch":"-","queue":"-","cpus":"1","memory":"-","disk":"-","time":"-","env":"-","error_action":"-","vol_ctxt":"150","inv_ctxt":"545","hostname":"-"}], "summary":[{"cpuUsage":{"mean":112.8,"min":112.8,"q1":112.8,"q2":112.8,"q3":112.8,"max":112.8,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"process":"createStructure","mem":null,"memUsage":null,"timeUsage":null,"vmem":null,"reads":null,"cpu":{"mean":112.8,"min":112.8,"q1":112.8,"q2":112.8,"q3":112.8,"max":112.8,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"time":{"mean":7219,"min":7219,"q1":7219,"q2":7219,"q3":7219,"max":7219,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"writes":null},{"cpuUsage":{"mean":116.5,"min":116.5,"q1":116.5,"q2":116.5,"q3":116.5,"max":116.5,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"process":"calculateElasticMatrix","mem":null,"memUsage":null,"timeUsage":null,"vmem":null,"reads":null,"cpu":{"mean":116.5,"min":116.5,"q1":116.5,"q2":116.5,"q3":116.5,"max":116.5,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"time":{"mean":28879,"min":28879,"q1":28879,"q2":28879,"q3":28879,"max":28879,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"writes":null}] };
+{"task_id":"1","hash":"ed\/60cf02","native_id":"3742","process":"createStructure","module":"-","container":"-","tag":"-","name":"createStructure (1)","status":"COMPLETED","exit":"0","submit":"1691156781280","start":"1691156781331","complete":"1691156790847","duration":"9567","realtime":"9435","%cpu":"106.2","%mem":"0.2","rss":"355602432","vmem":"1264447488","peak_rss":"355602432","peak_vmem":"1264447488","rchar":"67555088","wchar":"2219","syscr":"11521","syscw":"17","read_bytes":"0","write_bytes":"8192","attempt":"1","workdir":"\/home\/jovyan\/workflow-description\/nextflow\/work\/ed\/60cf02a70006cbe9cb90e3d6f80cc2","script":"\n    #!\/srv\/conda\/envs\/notebook\/\/bin\/python\n\n    from pyiron_base import Settings\n    s = Settings()\n    s._configuration[\'resource_paths\'].append(\'\/home\/menon\/pyiron\/resources\')\n    from pyiron import Project\n    pr = Project(\"elastic_constant\")\n    structure = pr.create.structure.bulk(\"Al\", \n                                         cubic=True)\n    outfile = \"structure_file.data\"\n    structure.write(outfile, format=\"vasp\")\n    ","scratch":"-","queue":"-","cpus":"1","memory":"-","disk":"-","time":"-","env":"-","error_action":"-","vol_ctxt":"8","inv_ctxt":"83","hostname":"-"},{"task_id":"2","hash":"ea\/f1046b","native_id":"4062","process":"calculateElasticMatrix","module":"-","container":"-","tag":"-","name":"calculateElasticMatrix (1)","status":"COMPLETED","exit":"0","submit":"1691156790932","start":"1691156790948","complete":"1691156815593","duration":"24661","realtime":"24110","%cpu":"163.9","%mem":"0.2","rss":"371945472","vmem":"1414561792","peak_rss":"374095872","peak_vmem":"1419960320","rchar":"223223519","wchar":"54080518","syscr":"176067","syscw":"17657","read_bytes":"0","write_bytes":"53100544","attempt":"1","workdir":"\/home\/jovyan\/workflow-description\/nextflow\/work\/ea\/f1046bcb1e67179a850b05e19cb4cf","script":"\n    #!\/srv\/conda\/envs\/notebook\/\/bin\/python\n    \n    from pyiron_base import Settings\n    s = Settings()\n    s._configuration[\'resource_paths\'].append(\'\/srv\/conda\/envs\/notebook\/\/share\/pyiron\')\n    s._configuration[\'resource_paths\'].append(\'\/srv\/conda\/envs\/notebook\/\/share\/iprpy\')\n\n\n    import numpy as np\n    from pyiron import Project    \n    pr = Project(\'elastic_constant\')\n    job = pr.create.job.Lammps(job_name=\"lammps_job\")\n    job.structure = pr.create.structure.ase.read(\"structure_file.data\", format=\'vasp\')\n    job.potential = \'2009--Mendelev-M-I--Al-Mg--LAMMPS--ipr1\'\n    job.calc_minimize()\n    elastic_job = job.create_job(pr.job_type.ElasticMatrixJob, \"elastic_job\")\n    elastic_job.input[\"eps_range\"] = 0.001\n    elastic_job.run()\n    np.savetxt(\"elastic_matrix.dat\", elastic_job[\"output\/elasticmatrix\"][\"C\"])\n    ","scratch":"-","queue":"-","cpus":"1","memory":"-","disk":"-","time":"-","env":"-","error_action":"-","vol_ctxt":"781","inv_ctxt":"534","hostname":"-"}], "summary":[{"cpuUsage":{"mean":106.2,"min":106.2,"q1":106.2,"q2":106.2,"q3":106.2,"max":106.2,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"process":"createStructure","mem":{"mean":355602432,"min":355602432,"q1":355602432,"q2":355602432,"q3":355602432,"max":355602432,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"memUsage":null,"timeUsage":null,"vmem":{"mean":1264447488,"min":1264447488,"q1":1264447488,"q2":1264447488,"q3":1264447488,"max":1264447488,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"reads":{"mean":67555088,"min":67555088,"q1":67555088,"q2":67555088,"q3":67555088,"max":67555088,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"cpu":{"mean":106.2,"min":106.2,"q1":106.2,"q2":106.2,"q3":106.2,"max":106.2,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"time":{"mean":9435,"min":9435,"q1":9435,"q2":9435,"q3":9435,"max":9435,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"},"writes":{"mean":2219,"min":2219,"q1":2219,"q2":2219,"q3":2219,"max":2219,"minLabel":"createStructure (1)","maxLabel":"createStructure (1)","q1Label":"createStructure (1)","q2Label":"createStructure (1)","q3Label":"createStructure (1)"}},{"cpuUsage":{"mean":163.9,"min":163.9,"q1":163.9,"q2":163.9,"q3":163.9,"max":163.9,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"process":"calculateElasticMatrix","mem":{"mean":374095872,"min":374095872,"q1":374095872,"q2":374095872,"q3":374095872,"max":374095872,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"memUsage":null,"timeUsage":null,"vmem":{"mean":1419960320,"min":1419960320,"q1":1419960320,"q2":1419960320,"q3":1419960320,"max":1419960320,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"reads":{"mean":223223519,"min":223223519,"q1":223223519,"q2":223223519,"q3":223223519,"max":223223519,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"cpu":{"mean":163.9,"min":163.9,"q1":163.9,"q2":163.9,"q3":163.9,"max":163.9,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"time":{"mean":24110,"min":24110,"q1":24110,"q2":24110,"q3":24110,"max":24110,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"},"writes":{"mean":54080518,"min":54080518,"q1":54080518,"q2":54080518,"q3":54080518,"max":54080518,"minLabel":"calculateElasticMatrix (1)","maxLabel":"calculateElasticMatrix (1)","q1Label":"calculateElasticMatrix (1)","q2Label":"calculateElasticMatrix (1)","q3Label":"calculateElasticMatrix (1)"}}] };
 
   </script>
 
