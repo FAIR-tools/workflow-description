@@ -18,3 +18,5 @@ See the implementation:
 - [Common Workflow Language](cwl/execute_cwl.ipynb)
 - [Nextflow](nextflow/execute_nextflow.ipynb)
 - [Snakemake](snakemake/execute_snakemake.ipynb)
+
+[![Binder](https://notebooks.mpcdf.mpg.de/binder/badge_logo.svg)](https://notebooks.mpcdf.mpg.de/binder/v2/git/https%3A%2F%2Fgitlab.mpcdf.mpg.de%2Fsmenon%2Fworkflow-description.git/HEAD?labpath=README.md)
