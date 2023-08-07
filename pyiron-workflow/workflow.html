@@ -323,116 +323,58 @@ document.write(`
 <p>This code is in development stage, and will change considerably..</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyiron_contrib.workflow.function</span> <span class="kn">import</span> <span class="n">function_node</span>
-<span class="kn">from</span> <span class="nn">pyiron_contrib.workflow.workflow</span> <span class="kn">import</span> <span class="n">Workflow</span>
-<span class="kn">from</span> <span class="nn">pyiron_contrib.workflow.function</span> <span class="kn">import</span> <span class="n">Function</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyiron_contrib.workflow</span> <span class="kn">import</span> <span class="n">Workflow</span>
 <span class="kn">from</span> <span class="nn">pyiron</span> <span class="kn">import</span> <span class="n">Project</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ccbc776357354f2aae9f0e4cba65f839", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_structure</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create an alloy structure</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@Workflow</span><span class="o">.</span><span class="n">wrap_as</span><span class="o">.</span><span class="n">single_value_node</span><span class="p">(</span><span class="n">update_on_instantiation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">calculate_elastic_matrix</span><span class="p">(</span>
+    <span class="n">structure</span><span class="p">,</span>
+<span class="p">):</span>
     <span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;elastic_constant&quot;</span><span class="p">)</span>
-    <span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> 
-                                         <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">structure</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_structure_node</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">create_structure</span><span class="p">,</span> <span class="s2">&quot;structure&quot;</span><span class="p">,</span> 
-                                 <span class="n">update_on_instantiation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_elastic_matrix</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                            <span class="n">potential</span><span class="o">=</span><span class="s1">&#39;2009--Mendelev-M-I--Al-Mg--LAMMPS--ipr1&#39;</span><span class="p">,</span>
-                            <span class="n">eps_range</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
-    <span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s1">&#39;elastic_constant&#39;</span><span class="p">)</span>
+    
     <span class="n">job</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">Lammps</span><span class="p">(</span><span class="n">job_name</span><span class="o">=</span><span class="s2">&quot;lammps_job&quot;</span><span class="p">)</span>
     <span class="n">job</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span>
-    <span class="n">job</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">potential</span>
-    <span class="n">job</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">()</span>
-    <span class="n">elastic_job</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">ElasticMatrixJob</span><span class="p">,</span> <span class="s2">&quot;elastic_job&quot;</span><span class="p">)</span>
-    <span class="n">elastic_job</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;eps_range&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eps_range</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="s1">&#39;2009--Mendelev-M-I--Al-Mg--LAMMPS--ipr1&#39;</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">elastic_job</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">pr</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">ElasticTensor</span><span class="p">,</span> <span class="s2">&quot;elastic_job&quot;</span><span class="p">)</span>
+    <span class="n">elastic_job</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;eps_range&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.001</span>
     <span class="n">elastic_job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">elastic_job</span><span class="p">[</span><span class="s2">&quot;output/elasticmatrix&quot;</span><span class="p">][</span><span class="s2">&quot;C&quot;</span><span class="p">]</span>
+    
+    <span class="n">elastic_matrix</span> <span class="o">=</span> <span class="n">elastic_job</span><span class="p">[</span><span class="s2">&quot;output/elastic_tensor&quot;</span><span class="p">]</span>
+    
+    <span class="n">pr</span><span class="o">.</span><span class="n">remove_jobs</span><span class="p">(</span><span class="n">silently</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">pr</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">elastic_matrix</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elastic_matrix_node</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">calculate_elastic_matrix</span><span class="p">,</span> <span class="s2">&quot;elastic_matrix&quot;</span><span class="p">,</span> 
-                                 <span class="n">update_on_instantiation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span> <span class="o">=</span> <span class="n">Workflow</span><span class="p">(</span><span class="s2">&quot;youngs_modulus&quot;</span><span class="p">)</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">atomistics</span><span class="o">.</span><span class="n">BulkStructure</span><span class="p">(</span><span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">calc</span> <span class="o">=</span> <span class="n">calculate_elastic_matrix</span><span class="p">(</span><span class="n">wf</span><span class="o">.</span><span class="n">structure</span><span class="p">,</span> <span class="n">project_name</span><span class="o">=</span><span class="n">wf</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_structure_node</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="s1">&#39;Al&#39;</span>
-<span class="n">elastic_matrix_node</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">create_structure_node</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">structure</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job elastic_job was saved and received the ID: 740
-The job s_e_0 was saved and received the ID: 741
-The job s_01_e_m0_00100 was saved and received the ID: 742
-The job s_01_e_m0_00050 was saved and received the ID: 743
-The job s_01_e_0_00050 was saved and received the ID: 744
-The job s_01_e_0_00100 was saved and received the ID: 745
-The job s_08_e_m0_00100 was saved and received the ID: 746
-The job s_08_e_m0_00050 was saved and received the ID: 747
-The job s_08_e_0_00050 was saved and received the ID: 748
-The job s_08_e_0_00100 was saved and received the ID: 749
-The job s_23_e_m0_00100 was saved and received the ID: 750
-The job s_23_e_m0_00050 was saved and received the ID: 751
-The job s_23_e_0_00050 was saved and received the ID: 752
-The job s_23_e_0_00100 was saved and received the ID: 753
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/menon/miniconda3/envs/workflow-desc/lib/python3.10/site-packages/pyiron_contrib/workflow/channels.py:272: UserWarning: structure (InputData) and structure (OutputData) were not a valid connection
-  warn(
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span><span class="p">(</span><span class="n">structure_element</span><span class="o">=</span><span class="s2">&quot;Al&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elastic_matrix_node</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">elastic_matrix</span><span class="o">.</span><span class="n">value</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[105.90187899,  60.85060019,  60.85060019,   0.        ,
-          0.        ,   0.        ],
-       [ 60.85060019, 105.90187899,  60.85060019,   0.        ,
-          0.        ,   0.        ],
-       [ 60.85060019,  60.85060019, 105.90187899,   0.        ,
-          0.        ,   0.        ],
-       [  0.        ,   0.        ,   0.        ,  31.46945444,
-          0.        ,   0.        ],
-       [  0.        ,   0.        ,   0.        ,   0.        ,
-         31.46945444,   0.        ],
-       [  0.        ,   0.        ,   0.        ,   0.        ,
-          0.        ,  31.46945444]])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">calc_elastic_matrix</span>
 </pre></div>
 </div>
 </div>
